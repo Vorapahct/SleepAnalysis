@@ -7,31 +7,17 @@ function x = customBin(Data,Range,Type)
     end
 
     [n,m] = size(Data);
-    CheckRange = Range(1);
-    RangeData = [TypeDataRange:TypeDataRange:25];
+    
+    if(Range(1) == -1)
+        Start = 1;
+    else
+        Start = Range(1)/TypeDataRange + 2;
+    end
+    Stop = Range(2)/TypeDataRange + 1;
     
     for j = 1:n
-
-        if(Range(1) == -1 && Range(2) == 25)
-            Numbers(j) = sum(Data(j,:));
-            continue;
-        elseif(Range(1) == -1 && Range(2) ~= 25)
-            Low = 1;
-        end
-        
-        Range(1) = Range(1)+0.2;
-        
-        for i = 1:length(RangeData)
-            if(Range(1) == RangeData(i))
-                Low = i+1; 
-            elseif(Range(2) == RangeData(i))
-                High = i+1; 
-            end   
-        end
-        
-        Numbers(j,1) = sum(Data(j,Low:High));
-        Range(1) = CheckRange;
+        Numbers(j,1) = sum(Data(j,Start:Stop));
     end
-    
-    x = Numbers;   %126
+
+    x = Numbers;   
 end
