@@ -1,6 +1,6 @@
 function x = xAxisSpacing(Type, intervalsOfType)
 
-    if(strcmp(Type,'wake') == true)
+    if(strcmp(Type,'wake EEG') == true)
         xSpacing = 0.5;
         xStep = 0.5;
     else
